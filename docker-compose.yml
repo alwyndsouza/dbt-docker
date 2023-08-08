@@ -23,6 +23,8 @@ services:
       dockerfile: Dockerfile
     command: [ "/bin/bash" ]
     env_file: .env
+    ports:
+      - "8080:8080"
     stdin_open: true
     tty: true
     volumes:

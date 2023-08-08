@@ -5,6 +5,11 @@ FROM python:3.8.1-slim-buster
 
 LABEL maintainer="Alwyn DSouza"
 
+# Env vars
+ENV DBT_HOME=/usr/app
+ENV PYTHONIOENCODING=utf-8
+ENV LANG=C.UTF-8
+
 # Set working directory
 # WORKDIR /app
 
@@ -20,22 +25,16 @@ RUN apt-get update && apt-get install -qq -y \
 # Set SSL verify off for git
 RUN git config --global http.sslVerify false
 
-# Env vars
-ENV PYTHONIOENCODING=utf-8
-ENV LANG=C.UTF-8
-
 # Make sure we are using latest pip
 # Update python
 RUN pip install --upgrade pip setuptools wheel --no-cache-dir
-
-# Create directory for dbt config
-RUN mkdir -p /root/.dbt
 
 # Make sure we are using latest pip
 RUN pip install --upgrade pip
 
 # Create directory for dbt config
 RUN mkdir -p /root/.dbt
+RUN mkdir -p ${DBT_HOME}
 
 # Copy requirements.txt
 COPY requirements.txt requirements.txt
