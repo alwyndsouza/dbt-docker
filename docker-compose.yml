@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  dbt-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: [ "dbt-rpc", "serve" ]
+    env_file: .env
+    environment:
+      - DBT_ENABLE_LEGACY_LOGGER=True
+    ports:
+      - '8581:8580'
+    volumes:
+      - ./:/app
+    networks:
+      - default
+
+  dbt-console:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: [ "/bin/bash" ]
+    env_file: .env
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/app
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge

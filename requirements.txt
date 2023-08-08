@@ -1,0 +1,2 @@
+dbt-databricks==1.0.0
+dbt-rpc==0.1.1
