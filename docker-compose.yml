@@ -27,6 +27,7 @@ services:
     ports:
       - "8080:8080"
     stdin_open: true
+    env_file: .env
     tty: true
     networks:
       - default

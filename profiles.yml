@@ -1,0 +1,15 @@
+config:
+  send_anonymous_usage_stats: False
+  use_colors: True
+
+databricks_dev:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      catalog: dev
+      schema: alwyn_test
+      host: cloud.databricks.com
+      http_path: /sql/1.0/warehouses/1111111111
+      token:  # Personal Access Token (PAT)
+      threads: 1  # optional, default 1

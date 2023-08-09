@@ -1,7 +1,7 @@
 ##
 # base image (abstract)
 ##
-FROM python:3.8.1-slim-buster
+FROM python:3.11-slim-buster
 
 LABEL maintainer="Alwyn DSouza"
 
@@ -19,10 +19,14 @@ RUN apt-get update && apt-get install -qq -y \
     && apt-get clean
 
 # Set SSL verify off for git
-RUN git config --global http.sslVerify false
+#RUN git config --global http.sslVerify false
 
 # Make sure we are using latest pip
 RUN pip install --upgrade pip
+
+# Create directory for dbt config
+RUN mkdir -p /root/.dbt
+COPY profiles.yml /root/.dbt/profiles.yml
 
 # Copy requirements.txt
 COPY requirements.txt requirements.txt
