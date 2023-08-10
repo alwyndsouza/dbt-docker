@@ -26,8 +26,10 @@ This repository contains the code to build docker image for dbt-databricks
 1. Specify the version dbt-databricks version in requirements.txt
 2. Update the environment variables
 
-    ``BUILD_VERSION={{ Ideally should be same as dbt version }}``
-	``DBT_PROJECT_FOLDER={{ dbt project path }}``
+   ```
+   BUILD_VERSION={{ Ideally should be same as dbt version }}
+   DBT_PROJECT_FOLDER={{ dbt project path }}
+   ```
 	
 3. Copy the profiles.yml file in the dbt project
 
