@@ -21,13 +21,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: docker-dbt-databricks
+    image: docker-dbt-databricks:${BUILD_VERSION}
     container_name: dbt
     command: [ "/bin/bash" ]
-    ports:
-      - "8080:8080"
+    #ports:
+    #  - "8080:8080"
     stdin_open: true
     env_file: .env
+    volumes:
+      - ${DBT_PROJECT_FOLDER}/:/usr/src/dbt
     tty: true
     networks:
       - default
