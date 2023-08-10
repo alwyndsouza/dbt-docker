@@ -1,4 +1,4 @@
-![dbt-logo](https://imgur.com/rGpbwpH.png)
+![dbt-logo](dbt-docker.png)
 
 # Docker for dbt databricks
 ```
