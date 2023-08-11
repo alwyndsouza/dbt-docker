@@ -21,11 +21,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: docker-dbt-databricks:${BUILD_VERSION}
-    container_name: dbt
+    image: ${DOCKER_IMAGE_NAME}:${BUILD_VERSION}
+    container_name: ${DOCKER_CONTAINER_NAME}
     command: [ "/bin/bash" ]
-    #ports:
-    #  - "8080:8080"
     stdin_open: true
     env_file: .env
     volumes:
