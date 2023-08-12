@@ -2,21 +2,6 @@ version: '3.8'
 
 services:
 
-  # dbt-server:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   command: [ "dbt-rpc", "serve" ]
-  #   env_file: .env
-  #   environment:
-  #     - DBT_ENABLE_LEGACY_LOGGER=True
-  #   ports:
-  #     - '8581:8580'
-  #   volumes:
-  #     - ./:/app
-  #   networks:
-  #     - default
-
   dbt:
     build:
       context: .
@@ -24,14 +9,17 @@ services:
     image: ${DOCKER_IMAGE_NAME}:${BUILD_VERSION}
     container_name: ${DOCKER_CONTAINER_NAME}
     command: [ "/bin/bash" ]
+    ports:
+      - "${DBT_DOCS_PORT}:8080"
     stdin_open: true
     env_file: .env
     volumes:
-      - ${DBT_PROJECT_FOLDER}/:/usr/src/dbt
+      - ${DBT_PROJECT}:/usr/src/dbt
+      - ${DBT_PROFILES}:/root/.dbt/profiles.yml
     tty: true
     networks:
       - default
 
-networks:
-  default:
-    driver: bridge
+#networks:
+#  default:
+#    driver: bridge
