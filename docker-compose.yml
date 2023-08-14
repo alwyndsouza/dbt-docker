@@ -16,6 +16,7 @@ services:
     volumes:
       - ${DBT_PROJECT}:/usr/src/dbt
       - ${DBT_PROFILES}:/root/.dbt/profiles.yml
+      #- /etc/ssl:/usr/local/share/ca-certificates
     tty: true
     networks:
       - default
