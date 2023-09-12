@@ -12,8 +12,8 @@ ENV LANG=C.UTF-8
 WORKDIR /usr/src/dbt
 
 # Add trusted hosts for pip install
-RUN pip config set global.trusted-host \
-    "pypi.org files.pythonhosted.org pypi.python.org"
+#RUN pip config set global.trusted-host \
+#    "pypi.org files.pythonhosted.org pypi.python.org"
 
 # Install OS dependencies
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
