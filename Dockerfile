@@ -3,8 +3,6 @@
 ##
 FROM python:3.11-slim-bullseye
 
-LABEL maintainer="Alwyn DSouza"
-
 # Env vars
 ENV PYTHONIOENCODING=utf-8
 ENV LANG=C.UTF-8
